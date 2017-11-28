@@ -13,8 +13,17 @@ pipeline {
       }
     }
     stage('Test') {
-      steps {
-        sh './jenkins/scripts/test.sh'
+      parallel {
+        stage('Test') {
+          steps {
+            sh './jenkins/scripts/test.sh'
+          }
+        }
+        stage('Publish') {
+          steps {
+            sh 'echo \'publish\''
+          }
+        }
       }
     }
     stage('Deliver') {
