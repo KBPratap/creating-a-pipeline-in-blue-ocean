@@ -36,5 +36,6 @@ pipeline {
   }
   environment {
     CI = 'true'
+    SRC_TOP = '/work/xm-server'
   }
 }
